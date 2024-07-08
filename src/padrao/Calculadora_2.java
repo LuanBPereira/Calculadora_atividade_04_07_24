@@ -1,4 +1,4 @@
-package padrao;
+ package padrao;
 
 import java.util.Scanner;
 
@@ -7,23 +7,21 @@ public class Calculadora_2 {
 	static Calculadora_2 c = new Calculadora_2();
 	
 	public static void main(String[] args) {
-		int escolha = c.exibirMenu();
-		
-		while(!(escolha >=5)) {
-			
-			
-			switch(escolha) {
-			case 1 -> c.somar();
-			case 2 -> c.subtrair();
-			case 3 -> c.multiplicar();
-			case 4 -> c.dividir();
-			
-			}
-			break;
-		}
-		
-	}
+		int escolha;
+		 do {
+	         escolha = c.exibirMenu();
 	
+	         switch (escolha) {
+	             case 1 -> c.somar();
+	             case 2 -> c.subtrair();
+	             case 3 -> c.multiplicar();
+	             case 4 -> c.dividir();
+	             case 5 -> System.out.println("Encerrando programa...");
+	             default -> System.out.println("Escolha inválida! Tente novamente.");
+	         }
+	     } while (escolha != 5);
+	}
+	 	
 	public int exibirMenu() {
 		System.out.println("""
 				(Calculadora)
@@ -37,107 +35,73 @@ public class Calculadora_2 {
 				5 - Encerrar programa.
 				""");
 		
-		int escolha = s.nextInt();
-		return escolha;
+		return s.nextInt();
+	}
+	
+	public double lerNumero(String mensagem) {
+		System.out.println(mensagem);
+		return s.nextDouble();
+	}
+	
+	public boolean verificarSeDesejaContinuar() {
+		System.out.println("Deseja continuar a operação? S/N");
+		String continuar = s.next();
+		return continuar.equalsIgnoreCase("S");
 	}
 	
 	public double somar() {
-		System.out.println("Digite o primeiro numero para realizar a operação:");
-		double valor1 = s.nextDouble();
-		System.out.println("Digite o outro numero para somar:");
-		double valor2 = s.nextDouble();
-		double soma = valor1 + valor2;
-		System.out.println("\nResultado: " + soma +
-				"\nDeseja continuar a operação? S/N");
-		String continuar = s.next();
+		double resultado = lerNumero("Digite o primeiro número para realizar a operação:");
+		resultado += lerNumero("Digite outro número para somar:");
+		System.out.println("\nResultado: " + resultado);
 		
-			while(continuar.equalsIgnoreCase("S")) {
-				System.out.println("\nDigite o outro numero para continuar a soma.");
-				double valor3 = s.nextDouble();
-				soma += (valor3);
-				System.out.println("\nResultado da soma no momento: " + soma + "\nDeseja continuar a operação? S/N");
-				continuar = s.next();
-				
-				if(continuar.equalsIgnoreCase("N")){
-					break;
-				}
-			}
-		System.out.println("\nResultado final da soma: " + soma);
-		return soma;
+		 while (verificarSeDesejaContinuar()) {
+	            resultado += lerNumero("Digite o outro número para continuar a soma.");
+	            System.out.println("\nResultado da soma no momento: " + resultado);
+	        }
+	        System.out.println("\nResultado final da soma: " + resultado);
+	     
+	        return resultado;
 	}
 
 	public double subtrair() {
-		System.out.println("Digite o primeiro numero para realizar a operação:");
-		double valor1 = s.nextDouble();
-		System.out.println("Digite o outro numero para somar:");
-		double valor2 = s.nextDouble();
-		double soma = valor1 + valor2;
-		System.out.println("\nResultado: " + soma +
-				"\nDeseja continuar a operação? S/N");
-		String continuar = s.next();
+		double resultado = lerNumero("Digite o primeiro número para realizar a operação:");
+		resultado -= lerNumero("Digite outro número para subtrair:");
+		System.out.println("\nResultado: " + resultado);
 		
-			while(continuar.equalsIgnoreCase("S")) {
-				System.out.println("\nDigite o outro numero para continuar a soma.");
-				double valor3 = s.nextDouble();
-				soma += (valor3);
-				System.out.println("\nResultado da soma no momento: " + soma + "\nDeseja continuar a operação? S/N");
-				continuar = s.next();
-				
-				if(continuar.equalsIgnoreCase("N")){
-					break;
-				}
-			}
-		System.out.println("\nResultado final da soma: " + soma);
-		return soma;
+		 while (verificarSeDesejaContinuar()) {
+	            resultado += lerNumero("Digite o outro número para continuar a subtração.");
+	            System.out.println("\nResultado da subtração no momento: " + resultado);
+	        }
+	        System.out.println("\nResultado final da subtração: " + resultado);
+	        
+	        return resultado;
 	}
 	
 	public double multiplicar() {
-		System.out.println("Digite o primeiro numero para realizar a operação:");
-		double valor1 = s.nextDouble();
-		System.out.println("Digite o outro numero para somar:");
-		double valor2 = s.nextDouble();
-		double multiplicacao = valor1 * valor2;
-		System.out.println("\nResultado: " + multiplicacao +
-				"\nDeseja continuar a operação? S/N");
-		String continuar = s.next();
+		double resultado = lerNumero("Digite o primeiro número para realizar a operação:");
+		resultado *= lerNumero("Digite outro número para multiplicar:");
+		System.out.println("\nResultado: " + resultado);
 		
-			while(continuar.equalsIgnoreCase("S")) {
-				System.out.println("\nDigite o outro numero para continuar a soma.");
-				double valor3 = s.nextDouble();
-				multiplicacao *= (valor3);
-				System.out.println("\nResultado da soma no momento: " + multiplicacao + "\nDeseja continuar a operação? S/N");
-				continuar = s.next();
-				
-				if(continuar.equalsIgnoreCase("N")){
-					break;
-				}
-			}
-		System.out.println("\nResultado final da soma: " + multiplicacao);
-		return multiplicacao;
+		 while (verificarSeDesejaContinuar()) {
+	            resultado += lerNumero("Digite o outro número para continuar a multiplicação.");
+	            System.out.println("\nResultado da multiplicação no momento: " + resultado);
+	        }
+	        System.out.println("\nResultado final da multiplicação: " + resultado);
+	        
+	        return resultado;
 	}
 	
 	public double dividir() {
-		System.out.println("Digite o primeiro numero para realizar a operação:");
-		double valor1 = s.nextDouble();
-		System.out.println("Digite o outro numero para somar:");
-		double valor2 = s.nextDouble();
-		double divisao = valor1 / valor2;
-		System.out.println("\nResultado: " + divisao +
-				"\nDeseja continuar a operação? S/N");
-		String continuar = s.next();
+		double resultado = lerNumero("Digite o primeiro número para realizar a operação:");
+		resultado /= lerNumero("Digite outro número para dividir:");
+		System.out.println("\nResultado: " + resultado);
 		
-			while(continuar.equalsIgnoreCase("S")) {
-				System.out.println("\nDigite o outro numero para continuar a soma.");
-				double valor3 = s.nextDouble();
-				divisao /= (valor3);
-				System.out.println("\nResultado da soma no momento: " + divisao + "\nDeseja continuar a operação? S/N");
-				continuar = s.next();
-				
-				if(continuar.equalsIgnoreCase("N")){
-					break;
-				}
-			}
-		System.out.println("\nResultado final da soma: " + divisao);
-		return divisao;
+		 while (verificarSeDesejaContinuar()) {
+	            resultado += lerNumero("Digite o outro número para continuar a divisão.");
+	            System.out.println("\nResultado da divisão no momento: " + resultado);
+	        }
+	        System.out.println("\nResultado final da divisão: " + resultado);
+	        
+	        return resultado;
 	}
 }
