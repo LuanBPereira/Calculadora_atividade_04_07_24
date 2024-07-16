@@ -8,9 +8,10 @@ public class HistoricoOperacoes {
 	private List<Operacao> historico = new ArrayList<>();
 
 	public void adicionarOperacao(String tipoOperacao, double valor1, double valor2, double resultado) {
-		if (historico.size() == 5) { //se o tamanho da lista chegar em 5, ela vai remover a primeira operação e colocar uma nova.
-            historico.remove(0);
-        }
+		if (historico. size() == 5) { // se o tamanho da lista chegar em 5, ela vai remover a primeira operação e
+										// colocar uma nova.
+			historico.remove(0);
+		}
 		historico.add(new Operacao(tipoOperacao, valor1, valor2, resultado));
 	}
 
@@ -24,9 +25,10 @@ public class HistoricoOperacoes {
 			}
 		}
 	}
-	// criei uma sub-classe, pois pra mim fazia sentido essa classe ser exclusiva
+
+	// criei uma classe interna, pois pra mim fazia sentido essa classe ser exclusiva
 	// do histórico de operações, já que ele vai ser a única classe a utiliza-lá.
-	public class Operacao {
+	class Operacao {
 		private String tipoOperacao;
 		private double valor1;
 		private double valor2;
@@ -40,7 +42,7 @@ public class HistoricoOperacoes {
 		}
 
 		// função que vai pegar o tipo da operação que foi realizada pelo usuário
-		// e vai colocar em um formato especifico a String dependendo da operação.
+		// e vai colocar em um formato especifico de String dependendo da operação.
 		public String formatarOperacao() {
 			switch (tipoOperacao.toLowerCase()) {
 			case "soma":
@@ -60,5 +62,4 @@ public class HistoricoOperacoes {
 			}
 		}
 	}
-
 }
